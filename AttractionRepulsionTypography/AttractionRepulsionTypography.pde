@@ -14,13 +14,13 @@ RShape grp;
 boolean isSpawning;
 
 void setup() {
+  size(1920, 1080);
   canvas = createGraphics(1920, 1080);
   canvas.beginDraw();
   canvas.endDraw();
-  size(floor(canvas.width / 2), floor(canvas.height / 2));
   background = loadImage("data/img/background.png");
   if (background.width != width || background.height != height) background.resize(width, height);
-  src = loadImage("http://img.ffffound.com/static-data/assets/6/9b28dddf710b48691923d039914d7359f2ccbf0b_m.jpg");
+  src = loadImage("data/img/foreground.jpg");
   src.loadPixels();
   physics = new VerletPhysics2D();
   physics.setDrag(0.975f);
@@ -28,7 +28,7 @@ void setup() {
   RG.setPolygonizer(RG.UNIFORMLENGTH);
   RG.setPolygonizerLength(1);
   grp = RG.getText("816", "font/Aldrich-Regular.ttf", 200, CENTER);
-  grp.centerIn(g,60);
+  grp.centerIn(g, 60);
   grp.translate(width / 2, height / 2);
   points = grp.getPoints();
   isSpawning = true;
@@ -103,4 +103,3 @@ void keyPressed() {
     img.save("data/output/composition-" + month() + "-" + day() + "-" + hour() + "-" + minute() + "-" + second() + ".tif");
   }
 }
-
